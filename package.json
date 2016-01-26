@@ -1,0 +1,17 @@
+{
+  "name": "efiles",
+  "version": "1.0.0",
+  "description": "An electron file editor",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.5"
+  },
+  "dependencies": {
+    "angular": "^1.4.9"
+  }
+}
