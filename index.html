@@ -5,17 +5,24 @@
     <title>StoryWeb</title>
       <link rel="stylesheet" href="css/bootstrap.min.css">
   </head>   
-  <body ng-controller="FileopsController as fileops">
-      <div class="container-fluid">
+  <body>
+      <div class="container-fluid" ng-controller="FileopsController as fileops">
        <div class="jumbotron">
-  <h1>Let's Get Started!</h1>
-  <p>With StoryWeb, you can write your own stories once, and recreate them time and time again!</p>
-  <p><button class="btn btn-primary btn-lg" id="writeStory" ng-click="fileops.newFile()">Start a New Story</button> <button class="btn btn-danger btn-lg" ng-click="fileops.openFile()">Load Your Story</button> <button class="btn btn-success btn-lg" ng-click="fileops.saveFile()">Save Your Story</button></p>
-<p><textarea id="editor" class="form-control" rows=10 ng-model="myStory"></textarea></p>
-</div>
-
-</div>
-<script src="js/textEditor.js"></script>
-<script src="js/fileops.js"></script>
+        <h1>Let's Get Started!</h1>
+            <p>
+                With StoryWeb, you can write your own stories once, 
+                and recreate them time and time again!
+            </p>
+        <div id="EditorArea">
+            <button class="btn btn-info" ng-click="fileops.openFile()">Load Your Story</button>
+            <button class="btn btn-success" ng-click="fileops.saveFile()" ng-if="myStory">Save Your Story</button>
+            <textarea id="editor" class="form-control" rows=10 ng-model="myStory" ng-show="fileops.showEditor"></textarea>
+            <button class="btn btn-warning" ng-if="myStory" ng-click="fileops.wordModeInit()">Word Mode</button>
+            <button class="btn btn-danger" ng-if="myStory">Sentence Mode</button>           
+        </div>
+       </div>    
+      </div>
+    <script src="js/textEditor.js"></script>
+    <script src="js/fileops.js"></script>
   </body>
 </html>

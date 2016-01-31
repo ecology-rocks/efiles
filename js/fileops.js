@@ -4,6 +4,12 @@
 
 angular.module('textEditor').controller('FileopsController', ['$scope', function ($scope) {
 
+    //initialize models
+    $scope.myStory = "";
+    $scope.showEditor = true;
+    this.showEditor = $scope.showEditor;
+
+    
     
     this.openFile = function () {
         dialog.showOpenDialog({ filters: [
@@ -18,6 +24,8 @@ angular.module('textEditor').controller('FileopsController', ['$scope', function
             });
         });
     };
+    
+    
     
     this.saveFile = function () {
         dialog.showSaveDialog({ filters: [
@@ -38,21 +46,20 @@ angular.module('textEditor').controller('FileopsController', ['$scope', function
         });
     };
     
-    this.newFile = function () {
-
-        dialog.showMessageBox({
-            message: "This will clear your progress. Are you sure? Have you saved?",
-            buttons: ["OK", "Cancel"]
-        }, function (buttonIndex) {
-            
-           //doesn't work;
-            //need to set $scope.myStory = null when button OK is clicked
-            //its not autoupdating
-        });
-        
-
-        
-        
+    
+    
+    /* 
+        This doesn't work because the page isn't listening for changes in showEditor.
+        I should make a custom directive templating the textEditor, so that I can call
+        as needed to show/hide.
+    
+    
+    */
+    this.wordModeInit = function () {
+        console.log("I'm here!");
+        $scope.showEditor = false;
+    
     };
+
 
 }]);
