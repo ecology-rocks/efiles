@@ -47,18 +47,11 @@ angular.module('textEditor').controller('FileopsController', ['$scope', function
     };
     
     
-    
-    /* 
-        This doesn't work because the page isn't listening for changes in showEditor.
-        I should make a custom directive templating the textEditor, so that I can call
-        as needed to show/hide.
-    
-    
-    */
     this.wordModeInit = function () {
-        console.log("I'm here!");
-        $scope.showEditor = false;
-    
+        //console.log("I'm here!");
+        this.showEditor = false;
+        $scope.showEditor = this.showEditor;
+        console.log($scope.myStory);
     };
 
 
