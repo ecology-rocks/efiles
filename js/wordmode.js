@@ -2,15 +2,20 @@
 /*global angular, dialog, fs */
 'use strict';
 
-angular.module('textEditor').controller('WordmodeController', ['$scope', function ($scope) {
-    // use foreach to split elements and put href() around them
-    //not functioning, obviously.
-    function logArrayElements(element, index, array) {
-        console.log('a[' + index + '] = ' + element);
-    }
+angular.module('textEditor').controller('WordmodeController', ['$scope', 'MyStory', function ($scope, MyStory) {
     
-    $scope.myStory.split(" ").forEach(logArrayElements);
-
+    var updateStory = function () {
+            $scope.story = MyStory.getValue();
+            $scope.storywords = $scope.story.split(" ");
+            console.log($scope.storywords);
+        };
     
-
+    $scope.$on('increment-value-event', updateStory);
+    
+    this.editModeInit = function () {
+        // need to update the ngShow w/ the editor to look at the service value instead
+        // then we can update between controllers to toggle views.
+        console.log("yay!");
+    };
+    
 }]);

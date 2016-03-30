@@ -15,16 +15,20 @@
             </p>
         <div id="EditorArea"  ng-show="fileops.showEditor">
             <button class="btn btn-info" ng-click="fileops.openFile()">Load Your Story</button>
-            <button class="btn btn-success" ng-click="fileops.saveFile()" ng-if="myStory">Save Your Story</button>
-            <textarea id="editor" class="form-control" rows=10 ng-model="myStory"></textarea>
-            <button class="btn btn-warning" ng-if="myStory" ng-click="fileops.wordModeInit()">Word Mode</button>
-            <button class="btn btn-danger" ng-if="myStory">Sentence Mode</button> 
+            <button class="btn btn-success" ng-click="fileops.saveFile()" ng-if="story">Save Your Story</button>
+            <textarea id="editor" class="form-control" rows=10 ng-model="story"></textarea>
+            <button class="btn btn-warning" ng-if="story" ng-click="fileops.wordModeInit()">Word Mode</button>
+            <button class="btn btn-danger" ng-if="story">Sentence Mode</button> 
         </div>
            
            
         <div id="WordModeArea" ng-show="!fileops.showEditor" ng-controller="WordmodeController as words">
-           Woo! {{4 + 2}}
-           
+            <a ng-repeat="word in storywords" href="#{{word}}">{{word}} </a>
+            <br />
+            <br />
+            
+            <button class="btn btn-warning" ng-if="story" ng-click="words.editModeInit()">Edit Mode</button>
+            <button class="btn btn-danger" ng-if="story">Sentence Mode</button> 
         </div>
        </div>    
       </div>

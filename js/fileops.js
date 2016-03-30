@@ -2,10 +2,10 @@
 /*global angular, dialog, fs */
 'use strict';
 
-angular.module('textEditor').controller('FileopsController', ['$scope', function ($scope) {
+angular.module('textEditor').controller('FileopsController', ['$scope', '$rootScope', 'MyStory', function ($scope, $rootScope, MyStory) {
 
     //initialize models
-    $scope.myStory = "";
+    $scope.story = "";
     $scope.showEditor = true;
     this.showEditor = $scope.showEditor;
 
@@ -49,10 +49,13 @@ angular.module('textEditor').controller('FileopsController', ['$scope', function
     
     this.wordModeInit = function () {
         //console.log("I'm here!");
+        MyStory.setValue($scope.story);
+        $rootScope.$broadcast('increment-value-event');
         this.showEditor = false;
         $scope.showEditor = this.showEditor;
-        console.log($scope.myStory);
+        console.log($scope.story);
     };
-
+    
+    
 
 }]);
